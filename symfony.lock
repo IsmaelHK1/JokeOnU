@@ -86,12 +86,6 @@
     "laminas/laminas-code": {
         "version": "3.4.1"
     },
-    "laminas/laminas-eventmanager": {
-        "version": "3.4.0"
-    },
-    "laminas/laminas-zendframework-bridge": {
-        "version": "1.4.1"
-    },
     "monolog/monolog": {
         "version": "2.5.0"
     },
@@ -136,9 +130,6 @@
         "files": [
             "./config/packages/sensio_framework_extra.yaml"
         ]
-    },
-    "symfony/amqp-messenger": {
-        "version": "v5.4.5"
     },
     "symfony/asset": {
         "version": "v5.4.7"
@@ -361,9 +352,6 @@
         "version": "v5.4.7"
     },
     "symfony/proxy-manager-bridge": {
-        "version": "v5.4.6"
-    },
-    "symfony/redis-messenger": {
         "version": "v5.4.6"
     },
     "symfony/routing": {
