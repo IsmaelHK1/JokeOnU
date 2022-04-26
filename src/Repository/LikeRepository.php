@@ -2,32 +2,32 @@
 
 namespace App\Repository;
 
-use App\Entity\Ranking;
+use App\Entity\Like;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Ranking>
+ * @extends ServiceEntityRepository<Like>
  *
- * @method Ranking|null find($id, $lockMode = null, $lockVersion = null)
- * @method Ranking|null findOneBy(array $criteria, array $orderBy = null)
- * @method Ranking[]    findAll()
- * @method Ranking[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Like|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Like|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Like[]    findAll()
+ * @method Like[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class RankingRepository extends ServiceEntityRepository
+class LikeRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Ranking::class);
+        parent::__construct($registry, Like::class);
     }
 
     /**
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function add(Ranking $entity, bool $flush = true): void
+    public function add(Like $entity, bool $flush = true): void
     {
         $this->_em->persist($entity);
         if ($flush) {
@@ -39,7 +39,7 @@ class RankingRepository extends ServiceEntityRepository
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function remove(Ranking $entity, bool $flush = true): void
+    public function remove(Like $entity, bool $flush = true): void
     {
         $this->_em->remove($entity);
         if ($flush) {
@@ -48,15 +48,15 @@ class RankingRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return Ranking[] Returns an array of Ranking objects
+    //  * @return Like[] Returns an array of Like objects
     //  */
     /*
     public function findByExampleField($value)
     {
-        return $this->createQueryBuilder('r')
-            ->andWhere('r.exampleField = :val')
+        return $this->createQueryBuilder('l')
+            ->andWhere('l.exampleField = :val')
             ->setParameter('val', $value)
-            ->orderBy('r.id', 'ASC')
+            ->orderBy('l.id', 'ASC')
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()
@@ -65,10 +65,10 @@ class RankingRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Ranking
+    public function findOneBySomeField($value): ?Like
     {
-        return $this->createQueryBuilder('r')
-            ->andWhere('r.exampleField = :val')
+        return $this->createQueryBuilder('l')
+            ->andWhere('l.exampleField = :val')
             ->setParameter('val', $value)
             ->getQuery()
             ->getOneOrNullResult()

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\JokeRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: JokeRepository::class)]
@@ -13,67 +15,80 @@ class Joke
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $title;
+    #[ORM\Column(type: 'integer')]
+    private $likes;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $type;
+    #[ORM\OneToOne(mappedBy: 'joke', targetEntity: User::class, cascade: ['persist', 'remove'])]
+    private $user;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $joke;
+    #[ORM\OneToMany(mappedBy: 'joke', targetEntity: Like::class)]
+    private $relationlike;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $anwser;
+    public function __construct()
+    {
+        $this->relationlike = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getTitle(): ?string
+    public function getLikes(): ?int
     {
-        return $this->title;
+        return $this->likes;
     }
 
-    public function setTitle(string $title): self
+    public function setLikes(int $likes): self
     {
-        $this->title = $title;
+        $this->likes = $likes;
 
         return $this;
     }
 
-    public function getType(): ?string
+    public function getUser(): ?User
     {
-        return $this->type;
+        return $this->user;
     }
 
-    public function setType(string $type): self
+    public function setUser(User $user): self
     {
-        $this->type = $type;
+        // set the owning side of the relation if necessary
+        if ($user->getJoke() !== $this) {
+            $user->setJoke($this);
+        }
+
+        $this->user = $user;
 
         return $this;
     }
 
-    public function getJoke(): ?string
+    /**
+     * @return Collection<int, Like>
+     */
+    public function getRelationlike(): Collection
     {
-        return $this->joke;
+        return $this->relationlike;
     }
 
-    public function setJoke(string $joke): self
+    public function addRelationlike(Like $relationlike): self
     {
-        $this->joke = $joke;
+        if (!$this->relationlike->contains($relationlike)) {
+            $this->relationlike[] = $relationlike;
+            $relationlike->setJoke($this);
+        }
 
         return $this;
     }
 
-    public function getAnwser(): ?string
+    public function removeRelationlike(Like $relationlike): self
     {
-        return $this->anwser;
-    }
-
-    public function setAnwser(string $anwser): self
-    {
-        $this->anwser = $anwser;
+        if ($this->relationlike->removeElement($relationlike)) {
+            // set the owning side to null (unless already changed)
+            if ($relationlike->getJoke() === $this) {
+                $relationlike->setJoke(null);
+            }
+        }
 
         return $this;
     }

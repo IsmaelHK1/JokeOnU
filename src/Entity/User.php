@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
@@ -22,8 +24,17 @@ class User
     #[ORM\Column(type: 'string', length: 255)]
     private $email;
 
-    #[ORM\Column(type: 'integer')]
-    private $level;
+    #[ORM\OneToOne(inversedBy: 'user', targetEntity: Joke::class, cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(nullable: false)]
+    private $joke;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Like::class)]
+    private $likes;
+
+    public function __construct()
+    {
+        $this->likes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -66,14 +77,44 @@ class User
         return $this;
     }
 
-    public function getLevel(): ?int
+    public function getJoke(): ?Joke
     {
-        return $this->level;
+        return $this->joke;
     }
 
-    public function setLevel(int $level): self
+    public function setJoke(Joke $joke): self
     {
-        $this->level = $level;
+        $this->joke = $joke;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Like>
+     */
+    public function getLikes(): Collection
+    {
+        return $this->likes;
+    }
+
+    public function addLike(Like $like): self
+    {
+        if (!$this->likes->contains($like)) {
+            $this->likes[] = $like;
+            $like->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLike(Like $like): self
+    {
+        if ($this->likes->removeElement($like)) {
+            // set the owning side to null (unless already changed)
+            if ($like->getUser() === $this) {
+                $like->setUser(null);
+            }
+        }
 
         return $this;
     }
