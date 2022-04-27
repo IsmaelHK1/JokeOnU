@@ -1,0 +1,40 @@
+.divider{
+    background-color: rgba(244,198, 36, 0.25);
+    width: 100%;
+    padding-top : 180px;
+}
+.divider #rank{
+    position : relative;
+    bottom: 160px;
+    left: 1320px;
+}
+
+.divider  #pseudo{
+    position : relative;
+    bottom: 18px;
+    left: 700px;
+    margin : 0;
+}
+
+.bi-person{
+    position : relative;
+    margin: 0;
+    bottom: 60px;
+    border-radius: 50%;
+    width: auto;
+    border: 3px solid;
+}
+
+.sedéconnecter{
+    position: absolute;
+    top: 620px;
+    left: 1290px;
+}
+
+.switchPseudo{
+    margin-bottom: 40px;
+}
+.card{
+    margin-left: 35%;
+    width :500px;
+}
