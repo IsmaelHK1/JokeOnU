@@ -1,20 +1,23 @@
-*{
-  font-family:"Poppins";
-}
+
 html{
   position: relative;
   min-height:100%
 }
-.body {
-  background: #F8F8F8;
+body {
+  background: rgba(224, 221, 221, 0.76);
+  height: auto;
+  width: 100%;
+  margin : 0;
+  padding: 0;;
 }
 #header{
+  font-family:"Poppins";
   background: white;
   display : grid;
   grid-template-columns: 40% auto 9% 7% 7%;
   padding : 0;
   margin: 0;
-  box-sizing: border-box;
+  top : 0;
   box-shadow: 0px 8px 4px rgba(244, 198, 36, 0.25);
   align-items: center;
 }
@@ -44,13 +47,12 @@ html{
 }
 
 #footer{
+  font-family:"Poppins";
   z-index : 0;
   background: white;
-  box-sizing: border-box;
   box-shadow: 0px -8px 4px rgba(244, 198, 36, 0.25);
+  height : 5%;
   position: absolute;
-  padding : 0;
-  margin: 0;
   bottom: 0;
   width: 100%;
   display: grid;

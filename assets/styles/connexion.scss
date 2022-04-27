@@ -1,33 +1,75 @@
-  .bi {
-    vertical-align: -.125em;
-    fill: currentColor;
-  }
-  
-  .rounded-4 { border-radius: .5rem; }
-  .rounded-5 { border-radius: .75rem; }
-  .rounded-6 { border-radius: 1rem; }
-  
-  .modal-sheet .modal-dialog {
-    width: 380px;
-    transition: bottom .75s ease-in-out;
-  }
-  .modal-sheet .modal-footer {
-    padding-bottom: 2rem;
-  }
-  
-  .modal-alert .modal-dialog {
-    width: 380px;
-  }
-  
-  .border-right { border-right: 1px solid #eee; }
-  
-  .modal-tour .modal-dialog {
-    width: 380px;
-  }
 
-  #pop-up{
-    border: 2px solid #F4C624;
-    box-sizing : border-box;
-    box-shadow: 20px 20px 4px rgba(244, 198, 36, 0.25);
-  }
+a{
+  text-decoration:none !important;
+}
+
+.row{
+  padding-top: 5%;
+}
+
+h1,h2,h3{
+  font-family: 'Kaushan Script', cursive;
+}
+    
+.myform{
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 1rem;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  pointer-events: auto;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0,0,0,.2);
+  border-radius: 1.1rem;
+  outline: 0;
+  max-width: 500px;
+}
+
+.tx-tfm{
+  text-transform:uppercase;
+}
+
+.mybtn{
+  border-radius:50px;
+}
+  
+.login-or {
+  position: relative;
+  color: #aaa;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.span-or {
+   display: block;
+   position: absolute;
+   left: 50%;
+   top: -2px;
+   margin-left: -25px;
+   background-color: #fff;
+   width: 50px;
+   text-align: center;
+   }
+   .hr-or {
+   height: 1px;
+   margin-top: 0px !important;
+   margin-bottom: 0px !important;
+   }
+   .google {
+   color:#666;
+   width:100%;
+   height:40px;
+   text-align:center;
+   outline:none;
+   border: 1px solid lightgrey;
+   }
+    form .error {
+   color: #ff0000;
+   }
+   #second{display:none;}
   
