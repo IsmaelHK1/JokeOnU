@@ -1,0 +1,32 @@
+.divider{
+    background-color: rgba(244,198, 36, 0.25);
+    width: 100%;
+    padding-top : 180px;
+}
+.divider #rank{
+    position : relative;
+    bottom: 160px;
+    left: 1320px;
+}
+
+.divider  #pseudo{
+    position : relative;
+    bottom: 18px;
+    left: 700px;
+    margin : 0;
+}
+
+.iconplace{
+    position : relative;
+    margin-left: 17px;
+    bottom: 60px;
+    border-radius: 50%;
+    width: auto;
+    border: 3px solid;
+}
+
+.sedéconnecter{
+    position: absolute;
+    top: 620px;
+    left: 1290px;
+}

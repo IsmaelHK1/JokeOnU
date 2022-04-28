@@ -1,0 +1,89 @@
+
+html{
+  position: relative;
+  min-height:100%;
+  overflow-x: hidden;
+}
+body {
+  background: rgba(224, 221, 221, 0.76);
+  height: auto;
+  width: 100%;
+  margin : 0;
+  padding: 0;;
+}
+
+#header{
+  font-family:"Poppins";
+  background: white;
+  display : grid;
+  grid-template-columns: 40% auto 9% 7% 7%;
+  padding : 0;
+  margin: 0;
+  top : 0;
+  box-shadow: 0px 8px 4px rgba(244, 198, 36, 0.25);
+  align-items: center;
+}
+
+#header .classement{
+  margin-top: 10px;
+  grid-column: 3;
+  grid-row : 2;
+}
+
+#header .joke{
+  grid-column: 4;
+  margin-top: 10px;
+  grid-row : 2;
+}
+#header .profil {
+  margin-top: 10px;
+  grid-column: 5;
+  grid-row : 2;
+}
+
+#header .logo {
+  grid-column: 1;
+  grid-row : 2;
+  width: 20%;
+  margin-left: 10px;
+}
+
+#footer{
+  font-family:"Poppins";
+  z-index : 0;
+  background: white;
+  box-shadow: 0px -8px 4px rgba(244, 198, 36, 0.25);
+  height : 5%;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 30% 20% 20% auto 10% 10%;
+}
+
+#footer .contact{
+  grid-column: 2;
+  position: absolute ;
+  left: 120px;
+}
+
+#footer .about{
+  grid-column: 3;
+  position: absolute ;
+  left: 20px;
+}
+
+#footer .bi{
+  z-index: 1;
+  color: gold;
+}
+#footer .bi-twitter{
+  grid-column: 5;
+  position: absolute ;
+  left: 100px;
+}
+#footer .bi-facebook{
+  grid-column: 6;
+  position: absolute ;
+  left: 10px;
+}
