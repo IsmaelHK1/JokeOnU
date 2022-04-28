@@ -16,7 +16,7 @@ class AppFixtures extends Fixture
         $faker = Faker\Factory::create('fr_FR');
 
         $jokes = [];
-        for ($i = 0; $i < 40; $i++) {
+        for ($i = 1; $i < 150; $i++) {
             $joke = new joke();
             $joke->setLikes($faker->randomDigitNot(2));
             $manager->persist($joke);
@@ -25,9 +25,10 @@ class AppFixtures extends Fixture
         $users = [];
         for ($i = 0; $i < 10; $i++) {
             $user = new user();
-            $user->setPseudo($faker->userName())
+            $user->setUsername($faker->userName())
                 ->setPassword($faker->password())
                 ->setEmail($faker->email())
+                ->setRoles(['ROLE_USER'])
                 ->setJoke($faker->randomElement($jokes));
                 $manager->persist($user);
                 $users[] = $user;
