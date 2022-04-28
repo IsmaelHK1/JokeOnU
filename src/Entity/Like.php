@@ -14,11 +14,11 @@ class Like
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'likes')]
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'like_relation')]
     #[ORM\JoinColumn(nullable: false)]
     private $user;
 
-    #[ORM\ManyToOne(targetEntity: Joke::class, inversedBy: 'relationlike')]
+    #[ORM\ManyToOne(targetEntity: Joke::class, inversedBy: 'like_relation')]
     #[ORM\JoinColumn(nullable: false)]
     private $joke;
 

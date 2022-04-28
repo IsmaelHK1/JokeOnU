@@ -15,18 +15,18 @@ class Joke
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: 'integer', nullable: true)]
     private $likes;
 
     #[ORM\OneToOne(mappedBy: 'joke', targetEntity: User::class, cascade: ['persist', 'remove'])]
     private $user;
 
     #[ORM\OneToMany(mappedBy: 'joke', targetEntity: Like::class)]
-    private $relationlike;
+    private $like_relation;
 
     public function __construct()
     {
-        $this->relationlike = new ArrayCollection();
+        $this->like_relation = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -39,7 +39,7 @@ class Joke
         return $this->likes;
     }
 
-    public function setLikes(int $likes): self
+    public function setLikes(?int $likes): self
     {
         $this->likes = $likes;
 
@@ -66,27 +66,27 @@ class Joke
     /**
      * @return Collection<int, Like>
      */
-    public function getRelationlike(): Collection
+    public function getLikeRelation(): Collection
     {
-        return $this->relationlike;
+        return $this->like_relation;
     }
 
-    public function addRelationlike(Like $relationlike): self
+    public function addLikeRelation(Like $likeRelation): self
     {
-        if (!$this->relationlike->contains($relationlike)) {
-            $this->relationlike[] = $relationlike;
-            $relationlike->setJoke($this);
+        if (!$this->like_relation->contains($likeRelation)) {
+            $this->like_relation[] = $likeRelation;
+            $likeRelation->setJoke($this);
         }
 
         return $this;
     }
 
-    public function removeRelationlike(Like $relationlike): self
+    public function removeLikeRelation(Like $likeRelation): self
     {
-        if ($this->relationlike->removeElement($relationlike)) {
+        if ($this->like_relation->removeElement($likeRelation)) {
             // set the owning side to null (unless already changed)
-            if ($relationlike->getJoke() === $this) {
-                $relationlike->setJoke(null);
+            if ($likeRelation->getJoke() === $this) {
+                $likeRelation->setJoke(null);
             }
         }
 

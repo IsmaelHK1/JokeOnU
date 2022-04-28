@@ -6,34 +6,36 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-class User
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $pseudo;
+    #[ORM\Column(type: 'string', length: 180, unique: true)]
+    private $username;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'json')]
+    private $roles = [];
+
+    #[ORM\Column(type: 'string')]
     private $password;
-
-    #[ORM\Column(type: 'string', length: 255)]
-    private $email;
 
     #[ORM\OneToOne(inversedBy: 'user', targetEntity: Joke::class, cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
     private $joke;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Like::class)]
-    private $likes;
+    private $like_relation;
 
     public function __construct()
     {
-        $this->likes = new ArrayCollection();
+        $this->like_relation = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -41,19 +43,54 @@ class User
         return $this->id;
     }
 
-    public function getPseudo(): ?string
+    /**
+     * @deprecated since Symfony 5.3, use getUserIdentifier instead
+     */
+    public function getUsername(): string
     {
-        return $this->pseudo;
+        return (string) $this->username;
     }
 
-    public function setPseudo(string $pseudo): self
+    public function setUsername(string $username): self
     {
-        $this->pseudo = $pseudo;
+        $this->username = $username;
 
         return $this;
     }
 
-    public function getPassword(): ?string
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUserIdentifier(): string
+    {
+        return (string) $this->username;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    /**
+     * @see PasswordAuthenticatedUserInterface
+     */
+    public function getPassword(): string
     {
         return $this->password;
     }
@@ -65,16 +102,24 @@ class User
         return $this;
     }
 
-    public function getEmail(): ?string
+    /**
+     * Returning a salt is only needed, if you are not using a modern
+     * hashing algorithm (e.g. bcrypt or sodium) in your security.yaml.
+     *
+     * @see UserInterface
+     */
+    public function getSalt(): ?string
     {
-        return $this->email;
+        return null;
     }
 
-    public function setEmail(string $email): self
+    /**
+     * @see UserInterface
+     */
+    public function eraseCredentials()
     {
-        $this->email = $email;
-
-        return $this;
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
     }
 
     public function getJoke(): ?Joke
@@ -92,27 +137,27 @@ class User
     /**
      * @return Collection<int, Like>
      */
-    public function getLikes(): Collection
+    public function getLikeRelation(): Collection
     {
-        return $this->likes;
+        return $this->like_relation;
     }
 
-    public function addLike(Like $like): self
+    public function addLikeRelation(Like $likeRelation): self
     {
-        if (!$this->likes->contains($like)) {
-            $this->likes[] = $like;
-            $like->setUser($this);
+        if (!$this->like_relation->contains($likeRelation)) {
+            $this->like_relation[] = $likeRelation;
+            $likeRelation->setUser($this);
         }
 
         return $this;
     }
 
-    public function removeLike(Like $like): self
+    public function removeLikeRelation(Like $likeRelation): self
     {
-        if ($this->likes->removeElement($like)) {
+        if ($this->like_relation->removeElement($likeRelation)) {
             // set the owning side to null (unless already changed)
-            if ($like->getUser() === $this) {
-                $like->setUser(null);
+            if ($likeRelation->getUser() === $this) {
+                $likeRelation->setUser(null);
             }
         }
 
