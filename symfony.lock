@@ -149,6 +149,9 @@
             "./config/packages/sensio_framework_extra.yaml"
         ]
     },
+    "symfony/amqp-messenger": {
+        "version": "v5.4.5"
+    },
     "symfony/asset": {
         "version": "v5.4.7"
     },
@@ -370,6 +373,9 @@
         "version": "v5.4.7"
     },
     "symfony/proxy-manager-bridge": {
+        "version": "v5.4.6"
+    },
+    "symfony/redis-messenger": {
         "version": "v5.4.6"
     },
     "symfony/routing": {
