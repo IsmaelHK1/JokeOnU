@@ -33,9 +33,10 @@ class AppFixtures extends Fixture
                 $users[] = $user;
         }
 
-        for ($i = 0; $i < 100; $i++) {
+        for ($i = 0; $i < 15; $i++) {
             $like = new like();
             $like->setUser($faker->randomElement($users));
+            $like->setJoke($faker->randomElement($jokes));
                 $manager->persist($like);
         }
         
