@@ -3,8 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Entity\Joke;
+use Blagues\BlaguesApi;
 use App\Form\RegistrationFormType;
-use App\Repository\JokeRepository;
 use App\Security\UserAuthenticator;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,8 +19,19 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class RegistrationController extends AbstractController
 {
     #[Route('/register', name: 'app_register')]
-    public function register(JokeRepository $jokeRepository, Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, UserAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
+    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, UserAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
     {
+        $blaguesApi = new BlaguesApi($_ENV['TOKEN']);
+
+        $jokes = $blaguesApi->getRandom(); 
+        var_dump($jokes->getId());
+
+        $blague = new joke();
+        $blague->setKeyApi($jokes);
+        $entityManager->persist($blague);
+        $entityManager->flush();
+        $blague->getId();
+
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
@@ -34,11 +46,10 @@ class RegistrationController extends AbstractController
             );
             $user->setEmail($form->get('email')->getData())
                 ->setRoles(['ROLE_USER'])
-                ->setJoke($jokeRepository->findOneBy(["46"]));
+                ->setJoke($blague);
             $entityManager->persist($user);
             $entityManager->flush();
-            // do anything else you need here, like send an email
-
+            
             return $userAuthenticator->authenticateUser(
                 $user,
                 $authenticator,
@@ -48,6 +59,7 @@ class RegistrationController extends AbstractController
 
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
+            'joke_key' => $jokes,
         ]);
     }
 }
