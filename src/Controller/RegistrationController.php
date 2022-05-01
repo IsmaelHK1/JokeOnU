@@ -14,7 +14,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
-use Symfony\Contracts\Translation\TranslatorInterface;
 
 class RegistrationController extends AbstractController
 {
@@ -23,7 +22,7 @@ class RegistrationController extends AbstractController
     {
         $blaguesApi = new BlaguesApi($_ENV['TOKEN']);
 
-        $jokes = $blaguesApi->getRandom(); 
+        $jokes = $blaguesApi->getRandom();
         var_dump($jokes->getId());
 
         $blague = new joke();
@@ -49,7 +48,7 @@ class RegistrationController extends AbstractController
                 ->setJoke($blague);
             $entityManager->persist($user);
             $entityManager->flush();
-            
+
             return $userAuthenticator->authenticateUser(
                 $user,
                 $authenticator,
