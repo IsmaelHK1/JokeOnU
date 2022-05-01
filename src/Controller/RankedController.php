@@ -19,7 +19,7 @@ use Doctrine\ORM\Connection;
 class RankedController extends AbstractController
 {
     #[Route('/ranked', name: 'app_ranked')]
-    public function index(LikeRepository $likeRepository, JokeRepository $jokeRepository, EntityManagerInterface $entityManager): Response
+    public function index(UserRepository $userRepository, LikeRepository $likeRepository, JokeRepository $jokeRepository, EntityManagerInterface $entityManager): Response
     {
         // $sql = $entityManager->createQueryBuilder('user');
         // $sql->select('username')
@@ -30,14 +30,24 @@ class RankedController extends AbstractController
 
         // $rank = $sql->getQuery()->execute();
 
-        $rank = array();
-        $jonction = array();
-        $jokeInOrder = $jokeRepository->findby(array(), array('likes' => 'DESC'));
-        $jonction->$joke;
+        $like = $likeRepository->findAll();
+
+
+
+        // $jokeInOrder = $jokeRepository->findby(array(), array('likes' => 'DESC'));
+
+        // foreach ($jokeInOrder as $joke) {
+        //     if ($joke->getLikes()) {
+        //         $jonction = $likeRepository->findby(array('id' => $joke->getId()));
+        //     }
+        // };
+        // foreach ($jonction as $nblike) {
+        //     $rank = $userRepository->findby(array('id' => $nblike->getId()));
+        // }
 
         return $this->render('ranked/index.html.twig', [
             'controller_name' => 'RankedController',
-            'rank' => $rank
+            'rank' => $like
         ]);
     }
 }

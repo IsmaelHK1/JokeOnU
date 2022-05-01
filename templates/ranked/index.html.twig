@@ -12,12 +12,12 @@
 {% for ranks in rank %}
 <div class="allpseudo">
   <div class="pseudocard">
-    <p>{{ranks}}</p>
+    <p>{{ranks.user.username}}  #{{ranks.id}}</p>
   </div>
 {% else %}
 <div class="allpseudo">
   <div class="pseudocard">
-    <p>le vide sera toujours vainceur.</p>
+    <p>lY'A WALOU</p>
   </div>
 </div>
 {% endfor %}
