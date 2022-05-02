@@ -24,6 +24,10 @@ class Joke
     #[ORM\OneToMany(mappedBy: 'joke', targetEntity: Like::class)]
     private $like_relation;
 
+    #[ORM\Column(type: 'object')]
+    private $key_api;
+
+
     public function __toString(): string
     {
         return (string) $this->id;
@@ -94,6 +98,18 @@ class Joke
                 $likeRelation->setJoke(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getKeyApi(): ?object
+    {
+        return $this->key_api;
+    }
+
+    public function setKeyApi(object $key_api): self
+    {
+        $this->key_api = $key_api;
 
         return $this;
     }

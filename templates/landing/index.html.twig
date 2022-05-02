@@ -1,164 +1,168 @@
 {% extends 'base.html.twig' %}
 
-    {% block title %}Landing page{% endblock %}
+{% block title %}Landing page
+{% endblock %}
 
-    {% block body %}
-        <div class="container">
-        <div class="row">
+{% block body %}
+	<div class="container">
+		<div class="row">
 			<div class="col-md-5 mx-auto">
-			<div id="first">
-				<div class="myform form ">
-					 <div class="logo mb-3">
-						 <div class="col-md-12 text-center">
-							<h1>Se connecter</h1>
-						 </div>
+				<div id="first">
+					<div class="myform form ">
+						<div class="logo mb-3">
+							<div class="col-md-12 text-center">
+								<h1>Se connecter</h1>
+							</div>
+						</div>
+						<form action="" method="post" name="login">
+							<div class="form-group">
+								<label for="exampleInputEmail1">Addresse Email</label>
+								<input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Entrer un email">
+							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail1">Mot de passe</label>
+								<input type="password" name="password" id="password" class="form-control" aria-describedby="emailHelp" placeholder="Entrer un mot de passe">
+							</div>
+							<div class="col-md-12 text-center ">
+								<button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm">Connecte toi</button>
+							</div>
+							<div class="col-md-12 ">
+								<div class="login-or">
+									<hr class="hr-or">
+									<span class="span-or">ou</span>
+								</div>
+							</div>
+							<div class="col-md-12 mb-3">
+								<p class="text-center">
+									<a href="javascript:void();" class="google btn mybtn">
+										<i class="fa fa-google-plus"></i>
+										inscrit toi avec google
+									</a>
+								</p>
+							</div>
+							<div class="form-group">
+								<p class="text-center">Pas de compte ?
+									<a href="#" id="signup">Inscrit toi ici</a>
+								</p>
+							</div>
+						</form>
+
 					</div>
-                   <form action="" method="post" name="login">
-                           <div class="form-group">
-                              <label for="exampleInputEmail1">Addresse Email</label>
-                              <input type="email" name="email"  class="form-control" id="email" aria-describedby="emailHelp" placeholder="Entrer un email">
-                           </div>
-                           <div class="form-group">
-                              <label for="exampleInputEmail1">Mot de passe</label>
-                              <input type="password" name="password" id="password"  class="form-control" aria-describedby="emailHelp" placeholder="Entrer un mot de passe">
-                           </div>
-                           <div class="col-md-12 text-center ">
-                              <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm">Connecte toi</button>
-                           </div>
-                           <div class="col-md-12 ">
-                              <div class="login-or">
-                                 <hr class="hr-or">
-                                 <span class="span-or">ou</span>
-                              </div>
-                           </div>
-                           <div class="col-md-12 mb-3">
-                              <p class="text-center">
-                                 <a href="javascript:void();" class="google btn mybtn"><i class="fa fa-google-plus">
-                                 </i> inscrit toi avec google
-                                 </a>
-                              </p>
-                           </div>
-                           <div class="form-group">
-                              <p class="text-center">Pas de compte ? <a href="#" id="signup">Inscrit toi ici</a></p>
-                           </div>
-                        </form>
-                 
+				</div>
+				<div id="second">
+					<div class="myform form ">
+						<div class="logo mb-3">
+							<div class="col-md-12 text-center">
+								<h1>Inscription</h1>
+							</div>
+						</div>
+						<form action="#" name="registration">
+							<div class="form-group">
+								<label for="exampleInputEmail1">Pseudo</label>
+								<input type="text" name="firstname" class="form-control" id="firstname" aria-describedby="emailHelp" placeholder="Enter Firstname">
+							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail1">Address email
+								</label>
+								<input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Entrer email">
+							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail1">Last Name</label>
+								<input type="text" name="lastname" class="form-control" id="lastname" aria-describedby="emailHelp" placeholder="Enter Lastname">
+							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail1">Password</label>
+								<input type="password" name="password" id="password" class="form-control" aria-describedby="emailHelp" placeholder="Enter Password">
+							</div>
+							<div class="col-md-12 text-center mb-3">
+								<button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm">Inscrit toi</button>
+							</div>
+							<div class="col-md-12 ">
+								<div class="form-group">
+									<p class="text-center">
+										<a href="#" id="signin">Déja un compte?</a>
+									</p>
+								</div>
+							</div>
+						</div>
+					</form>
 				</div>
 			</div>
-			  <div id="second">
-			      <div class="myform form ">
-                        <div class="logo mb-3">
-                           <div class="col-md-12 text-center">
-                              <h1 >Inscription</h1>
-                           </div>
-                        </div>
-                        <form action="#" name="registration">
-                           <div class="form-group">
-                              <label for="exampleInputEmail1">Pseudo</label>
-                              <input type="text"  name="firstname" class="form-control" id="firstname" aria-describedby="emailHelp" placeholder="Enter Firstname">
-                           </div>
-                            <div class="form-group">
-                              <label for="exampleInputEmail1">Address email </label>
-                              <input type="email" name="email"  class="form-control" id="email" aria-describedby="emailHelp" placeholder="Entrer email">
-                           </div>
-                           <div class="form-group">
-                              <label for="exampleInputEmail1">Last Name</label>
-                              <input type="text"  name="lastname" class="form-control" id="lastname" aria-describedby="emailHelp" placeholder="Enter Lastname">
-                           </div>
-                           <div class="form-group">
-                              <label for="exampleInputEmail1">Password</label>
-                              <input type="password" name="password" id="password"  class="form-control" aria-describedby="emailHelp" placeholder="Enter Password">
-                           </div>
-                           <div class="col-md-12 text-center mb-3">
-                              <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm">Inscrit toi</button>
-                           </div>
-                           <div class="col-md-12 ">
-                              <div class="form-group">
-                                 <p class="text-center"><a href="#" id="signin">Déja un compte?</a></p>
-                              </div>
-                           </div>
-                            </div>
-                        </form>
-                     </div>
-			</div>
 		</div>
-      </div> 
-      <script type="text/javascript">
-$("#signup").click(function() {
-$("#first").fadeOut("fast", function() {
+	</div>
+	<script type="text/javascript">
+		$("#signup").click(function () {
+$("#first").fadeOut("fast", function () {
 $("#second").fadeIn("fast");
 });
 });
 
-$("#signin").click(function() {
-$("#second").fadeOut("fast", function() {
+$("#signin").click(function () {
+$("#second").fadeOut("fast", function () {
 $("#first").fadeIn("fast");
 });
 });
 
 
-  
-         $(function() {
-           $("form[name='login']").validate({
-             rules: {
-               
-               email: {
-                 required: true,
-                 email: true
-               },
-               password: {
-                 required: true,
-                 
-               }
-             },
-              messages: {
-               email: "Entrer un email valide",
-              
-               password: {
-                 required: "Entrer un mot de passe",
-                
-               }
-               
-             },
-             submitHandler: function(form) {
-               form.submit();
-             }
-           });
-         });
-         
+$(function () {
+$("form[name='login']").validate({
+rules: {
 
+email: {
+required: true,
+email: true
+},
+password: {
+required: true
 
-$(function() {
-  
-  $("form[name='registration']").validate({
-    rules: {
-      firstname: "required",
-      lastname: "required",
-      email: {
-        required: true,
-        email: true
-      },
-      password: {
-        required: true,
-        minlength: 5
-      }
-    },
-    
-    messages: {
-      firstname: "Entrer votre prénom",
-      lastname: "Please enter your lastname",
-      password: {
-        required: "Entrer un mot de passe",
-        minlength: "Votre mot de passe doit faire 5 lettre/chiffre minimum",
-      },
-      email: "Entrer une address email valide",
-    },
-  
-    submitHandler: function(form) {
-      form.submit();
-    }
-  });
+}
+},
+messages: {
+email: "Entrer un email valide",
+
+password: {
+required: "Entrer un mot de passe"
+
+}
+
+},
+submitHandler: function (form) {
+form.submit();
+}
+});
 });
 
-      </script>
-    {% endblock %}
+
+$(function () {
+
+$("form[name='registration']").validate({
+rules: {
+firstname: "required",
+lastname: "required",
+email: {
+required: true,
+email: true
+},
+password: {
+required: true,
+minlength: 5
+}
+},
+
+messages: {
+firstname: "Entrer votre prénom",
+lastname: "Please enter your lastname",
+password: {
+required: "Entrer un mot de passe",
+minlength: "Votre mot de passe doit faire 5 lettre/chiffre minimum"
+},
+email: "Entrer une address email valide"
+},
+
+submitHandler: function (form) {
+form.submit();
+}
+});
+});
+	</script>
+{% endblock %}
