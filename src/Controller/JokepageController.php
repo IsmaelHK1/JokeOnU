@@ -6,8 +6,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Blagues\BlaguesApi;
+use App\Entity\User;
 use App\Repository\JokeRepository;
 use App\Repository\UserRepository;
+use Faker;
+
 
 class JokepageController extends AbstractController
 {
@@ -15,9 +18,12 @@ class JokepageController extends AbstractController
     public function index(JokeRepository $jokeRepository, UserRepository $userRepository): Response
     {
         $blaguesApi = new BlaguesApi($_ENV['TOKEN']);
+        $alluser = $userRepository->findAll();
+        shuffle($alluser);
+
 
         //recuperation d'une blague a partir d'un user random
-        $oneUser = $userRepository->getRandom();
+        $oneUser = $alluser[1]->getId();
         $oneUser = $oneUser->getJoke_id();
 
         $oneJoke = $jokeRepository->findOneBy($oneUser);
