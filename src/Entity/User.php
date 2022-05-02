@@ -38,6 +38,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 255)]
     private $email;
 
+    public function __toString(): string
+    {
+        return (string) $this->id;
+    }
+    
     public function __construct()
     {
         $this->like_relation = new ArrayCollection();

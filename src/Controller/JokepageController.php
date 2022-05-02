@@ -23,10 +23,9 @@ class JokepageController extends AbstractController
 
 
         //recuperation d'une blague a partir d'un user random
-        $oneUser = $alluser[1]->getId();
-        $oneUser = $oneUser->getJoke_id();
+        $oneUser = $alluser[1]->getJoke();
+        $oneJoke = $jokeRepository->findOneBy(array('id' => $oneUser->getId()));
 
-        $oneJoke = $jokeRepository->findOneBy($oneUser);
         $jokesfromApi = $blaguesApi->getbyId(intval($oneJoke->getKeyApi()));
         var_dump($jokesfromApi->getJoke());
         var_dump($jokesfromApi->getAnswer());

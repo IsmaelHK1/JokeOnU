@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Joke index{% endblock %}
+
+{% block body %}
+    <h1>Joke index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Likes</th>
+                <th>Key_api</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for joke in jokes %}
+            <tr>
+                <td>{{ joke.id }}</td>
+                <td>{{ joke.likes }}</td>
+                <td>{{ joke.keyApi }}</td>
+                <td>
+                    <a href="{{ path('app_joke_show', {'id': joke.id}) }}">show</a>
+                    <a href="{{ path('app_joke_edit', {'id': joke.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_joke_new') }}">Create new</a>
+{% endblock %}

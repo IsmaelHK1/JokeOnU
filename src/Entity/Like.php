@@ -22,6 +22,11 @@ class Like
     #[ORM\JoinColumn(nullable: false)]
     private $joke;
 
+    public function __toString(): string
+    {
+        return (string) $this->id;
+    }
+    
     public function getId(): ?int
     {
         return $this->id;
