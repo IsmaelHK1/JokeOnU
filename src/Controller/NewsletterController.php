@@ -11,6 +11,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
+
+
 
 class NewsletterController extends AbstractController
 {
@@ -19,7 +23,8 @@ class NewsletterController extends AbstractController
     public function register(
         Request $request,
         EntityManagerInterface $em,
-        NewsletterSubscribed $newsletters
+        NewsletterSubscribed $newsletters,
+        MailerInterface $mailer
     ): Response {
         $newsletter = new Newsletter();
         $form = $this->createForm(NewsletterType::class, $newsletter);
@@ -29,7 +34,12 @@ class NewsletterController extends AbstractController
             $newsletter->setCreated(new DateTime());
             $em->persist($newsletter);
             $em->flush();
-            $newsletters->sendConfirmation($newsletter);
+            $email = (new Email())
+                ->from("noreply@jokeonu.com")
+                ->to($newsletter->getEmail())
+                ->subject("Inscription à la newsletter")
+                ->text("Votre email " . $newsletter->getEmail() . " a bien été enregistré, merci");
+            $mailer->send($email);
             return $this->redirectToRoute('app_index');
         }
 

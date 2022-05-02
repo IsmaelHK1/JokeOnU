@@ -16,11 +16,5 @@ class NewsletterSubscribed
 
     public function sendConfirmation(Newsletter $newsletter)
     {
-        $email = (new Email())
-            ->from("noreply@jokeonu.com")
-            ->to($newsletter->getEmail())
-            ->subject("Inscription à la newsletter")
-            ->text("Votre email " . $newsletter->getEmail() . " a bien été enregistré, merci");
-        $this->mailer->send($email);
     }
 }
