@@ -15,14 +15,13 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $blaguesApi = new BlaguesApi($_ENV['TOKEN']);
-
         $faker = Faker\Factory::create('fr_FR');
 
         $jokes = [];
         for ($i = 1; $i < 150; $i++) {
             $joke = new joke();
             $joke->setLikes($faker->randomDigitNot(2));
-            $joke->setKeyApi($blaguesApi->getRandom());
+            $joke->setKeyApi($blaguesApi->getRandom()->getId());
             $manager->persist($joke);
             $jokes[] = $joke;
         }
