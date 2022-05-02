@@ -4,10 +4,10 @@
 {% block body %}
 <div class="wrapper">
     <div class="contentbox">
-        <h2 class="catégorie">Catégorie</h2>
+        <h2 class="catégorie">{{jokes.type}}</h2>
         <div class="LABARRE"></div>
-    <p class="question">QUEST CE QU'UN AMSTER DANS L'ESPACE ?</p>
-    <p class="answer">UN AMSTEROIDE </p>
+    <p class="question">{{jokes.joke}}</p>
+    <p class="answer">{{jokes.answer}}</p>
     </div>
 </div>
 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">

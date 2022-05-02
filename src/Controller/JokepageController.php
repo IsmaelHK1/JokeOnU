@@ -26,12 +26,10 @@ class JokepageController extends AbstractController
         $oneJoke = $alluser[1]->getJoke();
         $oneJoke = $jokeRepository->findOneBy(array('id' => $oneJoke->getId()));
         $jokesfromApi = $blaguesApi->getbyId($oneJoke->getKeyApi());
-        var_dump($jokesfromApi->getJoke());
-        var_dump($jokesfromApi->getAnswer());
 
         return $this->render('jokepage/index.html.twig', [
             'controller_name' => 'JokepageController',
-            'joke_key' => $jokesfromApi,
+            'jokes' => $jokesfromApi,
         ]);
     }
 }
