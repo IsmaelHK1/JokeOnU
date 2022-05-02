@@ -20,10 +20,9 @@ class AppFixtures extends Fixture
 
         $jokes = [];
         for ($i = 1; $i < 150; $i++) {
-            $jokefromapi = $blaguesApi->getRandom();
             $joke = new joke();
             $joke->setLikes($faker->randomDigitNot(2));
-            $joke->setKeyApi($jokefromapi->getId());
+            $joke->setKeyApi($blaguesApi->getRandom());
             $manager->persist($joke);
             $jokes[] = $joke;
         }
