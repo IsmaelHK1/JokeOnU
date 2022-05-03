@@ -255,7 +255,7 @@ $ https://localhost:7423/
 
 Dans un premier temps, lorsque nous avons commencé à développer le projet Symfony, la base de données nous à posé quelques problèmes. Notamment au niveau des relations entre nos entités. Pour résoudre ce problème, nous avons à plusieurs reprise re créer une nouvelle base de données avec de nouvelles relation. Ce qui nous à pris pas mal de temps. Pour s'assurer que celle-ci était bien fonctionnel du début à la fin, nous avons insérer de fausses données à l'aide de faker et des fixtures de symfony.
 
-`IMAGE MCD`
+![unknown](https://user-images.githubusercontent.com/76099896/166505684-c137190e-b714-4ad4-9315-ed2a8284f0fe.png)
 
 Nous avons également rencontrés quelques souci au niveaux de nos fixtures, nous n'arrivions pas à insèrer toutes nos données dans chacune des tables. Cela était du à cause d'une relation OneToOne entre notre entité User et Joke, ou nos fixtures voulaient assignés 2 blagues pour un seul user, ce qui dans notre cas n'était pas possible. 
 
