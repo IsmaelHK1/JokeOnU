@@ -102,7 +102,7 @@ class Joke
         return $this;
     }
 
-    public function getKeyApi(): ?object
+    public function getKeyApi(): ?int
     {
         return $this->key_api;
     }
