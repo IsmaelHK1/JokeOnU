@@ -14,7 +14,9 @@ Vous avez la possibilité d'aimer les blagues parmis toutes celles assigné au u
 
 ## I - b - Lancer le projet
 
-Premierement, avant de récupere notre projet vous devais avoir une base de donnée sql et un mailtrap fait au préalable, ainsi fait vous devrait mettre les lien dans votre .env.local . Voici un exemple de à quoi doit ressembler le votre :
+Premierement, avant de récupere notre projet vous devez avoir une base de donnée sql et un mailtrap fait au préalable, ainsi fait vous devrez mettre les liens dans votre .env.local. 
+
+Voici un exemple de à quoi doit ressembler le votre :
 
 ```bash
 DATABASE_URL="mysql://root:<password>@localhost:<port>/jokeonu?serverVersion=8.0&charset=utf8mb4
@@ -252,6 +254,35 @@ Dans notre cas, nous avons accès à Mailtrap via l'URL :
 ```bash
 $ https://localhost:7423/
 ```
+### Gestion de l'API 
+
+Lorsque notre base de données à été réalisé et fonction correctement, nous faisons une requête d'API, qui contient toutes les blagues. 
+
+Pour cela, lancer la commande : 
+
+```bash
+$ compore require zuruuh/blagues-api
+``` 
+Voici un exemple qui nous permet de récuperer une blague random. 
+
+```bash
+<?php
+
+use Blagues\BlaguesApi;
+
+class Main
+{
+    public static main(): void
+    {
+        $blaguesApi = new BlaguesApi($_ENV['TOKEN']);
+
+        $joke = $blaguesApi->getRandom(); // Returns an object of class Blagues\Models\Joke
+
+        var_dump($joke->getJoke()); // This returns the actual joke.
+        var_dump($joke->getAnswer()); // And this return the answer to the joke if there is one.
+    }
+}
+```
 
 ## IV - Problèmes rencontrés
 
@@ -278,5 +309,5 @@ Nous pourrions faire encore une plus grande liste des problèmees rencontrés ma
 
 ## V - Points d'améliorations
 
-Pour continuer l'avancée de notre application dans le futur, nous aimerions améliorer l'interface utilisateur de notre site qui à été bousculer par l'arriver des formulaires. Permettre à un utilisateur de pouvoir poster lui même sa blague sur le site. Et surtout optimiser tout le site (ca ram de ouf).
+Pour continuer l'avancée de notre application dans le futur, nous aimerions améliorer l'interface utilisateur de notre site qui à été bousculer par l'arriver des formulaires. Permettre à un utilisateur de pouvoir poster lui même sa blague sur le site. Et surtout optimiser tout le site (site trop lent).
 
