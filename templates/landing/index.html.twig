@@ -32,14 +32,6 @@
 									<span class="span-or">ou</span>
 								</div>
 							</div>
-							<div class="col-md-12 mb-3">
-								<p class="text-center">
-									<a href="javascript:void();" class="google btn mybtn">
-										<i class="fa fa-google-plus"></i>
-										inscrit toi avec google
-									</a>
-								</p>
-							</div>
 							<div class="form-group">
 								<p class="text-center">Pas de compte ?
 									<a href="#" id="signup">Inscrit toi ici</a>
@@ -57,25 +49,25 @@
 							</div>
 						</div>
 						<form action="#" name="registration">
+						{{ form_start(registrationForm) }}
 							<div class="form-group">
-								<label for="exampleInputEmail1">Pseudo</label>
+								<label for="exampleInputEmail1">{{ form_row(registrationForm.username) }}</label>
 								<input type="text" name="firstname" class="form-control" id="firstname" aria-describedby="emailHelp" placeholder="Enter Firstname">
 							</div>
 							<div class="form-group">
-								<label for="exampleInputEmail1">Address email
-								</label>
+								<label for="exampleInputEmail1">{{ form_row(registrationForm.email) }}</label>
 								<input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Entrer email">
 							</div>
 							<div class="form-group">
-								<label for="exampleInputEmail1">Last Name</label>
-								<input type="text" name="lastname" class="form-control" id="lastname" aria-describedby="emailHelp" placeholder="Enter Lastname">
-							</div>
-							<div class="form-group">
-								<label for="exampleInputEmail1">Password</label>
+								<label for="exampleInputEmail1">{{ form_row(registrationForm.plainPassword, {
+            						label: 'Password'
+        						}) }}</label>
 								<input type="password" name="password" id="password" class="form-control" aria-describedby="emailHelp" placeholder="Enter Password">
 							</div>
+							{{ form_row(registrationForm.agreeTerms) }}
 							<div class="col-md-12 text-center mb-3">
 								<button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm">Inscrit toi</button>
+								{{ form_end(registrationForm) }}
 							</div>
 							<div class="col-md-12 ">
 								<div class="form-group">

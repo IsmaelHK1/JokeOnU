@@ -27,6 +27,11 @@ class Joke
     #[ORM\Column(type: 'integer')]
     private $key_api;
 
+    public function __toString(): string
+    {
+        return (string) $this->id;
+    }
+
     public function __construct()
     {
         $this->like_relation = new ArrayCollection();

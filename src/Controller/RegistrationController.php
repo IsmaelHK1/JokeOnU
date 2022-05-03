@@ -23,10 +23,9 @@ class RegistrationController extends AbstractController
         $blaguesApi = new BlaguesApi($_ENV['TOKEN']);
 
         $jokes = $blaguesApi->getRandom();
-        var_dump($jokes->getId());
 
         $blague = new joke();
-        $blague->setKeyApi($jokes);
+        $blague->setKeyApi($jokes->getId());
         $entityManager->persist($blague);
         $entityManager->flush();
         $blague->getId();
@@ -58,7 +57,6 @@ class RegistrationController extends AbstractController
 
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
-            'joke_key' => $jokes,
         ]);
     }
 }
