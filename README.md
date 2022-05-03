@@ -8,13 +8,13 @@ Nous sommes le groupe Zinattendu, composé de Ismaël HACQUIN et de Mattéo DINV
 
 **JokeOnU** est un site qui regroupe un certain nombre de blagues de tout genre, classé par catégories.
 
-Pour pouvoir accéder aux blagues, il faut d'abord se connecter ou se créer un compte. si vous créer votre compte, une blague vous ai automatiquement assigné.
+Pour pouvoir accéder aux blagues, il faut d'abord se connecter ou se créer un compte. Lorsque vous vous créez un compte, une blague vous ai automatiquement assigné.
 
-Vous avez la possibilité d'aimer les blagues parmis toutes celles assigné au utilisateur, de ce fait un classement des utilisateurs est effectuer en fonction du nombre like qu'il a recu sur sa blagues assigné.
+Vous avez la possibilité d'aimer les blagues parmis toutes celles assignées au utilisateur, de ce fait un classement des utilisateurs est effectué en fonction du nombre de like qu'il a recu sur sa blague assignée.
 
 ## I - b - Lancer le projet
 
-Premierement, avant de récupere notre projet vous devez avoir une base de donnée sql et un mailtrap fait au préalable, ainsi fait vous devrez mettre les liens dans votre .env.local. 
+Premièrement, avant de récuperer notre projet vous devez avoir une base de donnée sql et un mailtrap fait au préalable, ainsi  vous devrez mettre les liens dans votre .env.local. 
 
 Voici un exemple de à quoi doit ressembler le votre :
 
@@ -61,15 +61,15 @@ Cette route permet à l'utilisateur de pouvoir se connecter à son compte de man
 
 La route `/logout` :
 
-Cette route permet à l'utilisatuer de pouvoir se déconnecter de son compte. le bouton déconnection dans la page profil peut vous aider.
+Cette route permet à l'utilisatuer de pouvoir se déconnecter de son compte. le bouton déconnexion dans la page profil peut vous aider.
 
 La route `/register` :
 
-Cette route permet à l'utilisateur de pouvoir se créer un compte, et ainsi renseigner ses informations à l'aide d'un formulaire. Quand une personne crée son compte il recois automatiquement une newsletter.
+Cette route permet à l'utilisateur de pouvoir se créer un compte, et ainsi renseigner ses informations à l'aide d'un formulaire. Quand une personne crée son compte il recoit automatiquement une newsletter.
 
 La route `/admin` :
 
-Cette route est destinée uniquement à un utilisateur qui possède le role ADMIN sur le site internet. A l'aide du role ADMIN, il aura la possibilité de pouvoir ajouter, supprimer ou modifier un utilisateur à l'aide du back office.
+Cette route est destinée uniquement à un utilisateur qui possède le role ADMIN sur le site internet. A l'aide du role ADMIN, il aura la possibilité de pouvoir ajouter, supprimer ou modifier un utilisateur via le back office.
 
 La route `/admin/user/` :
 
@@ -291,7 +291,7 @@ Dans un premier temps, lorsque nous avons commencé à développer le projet Sym
 <img width="593" alt="Capture d’écran 2022-05-03 à 22 27 00" src="https://user-images.githubusercontent.com/76099896/166569703-70cf44d3-c53e-4d26-b753-1d3fc435154b.png">
 
 
-Nous avons également rencontrés quelques souci au niveaux de nos fixtures, nous n'arrivions pas à insèrer toutes nos données dans chacune des tables. Cela était du à cause d'une relation OneToOne entre notre entité User et Joke, ou nos fixtures voulaient assignés 2 blagues pour un seul user, ce qui dans notre cas impossible. 
+Nous avons également rencontrés quelques soucis au niveau de nos fixtures, nous n'arrivions pas à insèrer toutes nos données dans chacune des tables. Cela était du à cause d'une relation OneToOne entre notre entité User et Joke, ou nos fixtures voulaient assignés 2 blagues pour un seul user, ce qui dans notre cas impossible. 
 
 (Pour résoudre cela, dans le fichier `AppFixtures.php` nous avons retravaillé notre boucle FOR pour éviter ces soucis d'insertion.)
 
@@ -302,11 +302,9 @@ Pour cela, nous avons utiliser la commande :
 ```bash
 $ composer require zuruuh/blagues-api
 ```
-Cela nous a permis de récuperer les données de l'API et au sujet du token nous l'avons disposé dans le .env
+Cela nous a permis de récuperer les données de l'API et nous l'avons déposé dans le .env pour avoir l'accès de votre coté.
 
-L'un des grand problème qui a pu arriver fut un probléme de certificat ssl lors de l'appel d'API, en effet meme en retirant le 's' de https PHP fesais la requête comme si rien n'avait changer, le seul moyen de parvenir à faire cette apelle d'API fut de changer des fichier de configuration de php.ini, il faut savoir que cette erreur n'arrive pas a tout les ordinateurs et il y'a peut de documentation sur ce problème, juste une question de chance.
-
-Nous pourrions faire encore une plus grande liste des problèmees rencontrés mais nous avons atteint notre but final donc admirer le résultat plutôt.
+L'un des grand problème qui a pu arriver est un probléme de certificat ssl lors de l'appel d'API, en effet meme en retirant le 's' de https PHP ne changait pas la requète, le seul moyen de parvenir à faire cette appelle API était de changer des fichiers de configuration de php.ini.
 
 ## V - Points d'améliorations
 
