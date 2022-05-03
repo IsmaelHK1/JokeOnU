@@ -43,8 +43,8 @@ class JokepageController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $like->setUser(
-                // $this->getUser();
-                $this->$userRepository->findOneBy(array('id' => $this->getUser()->getUserIdentifier()))
+                // $this->getUser()
+                $this->$userRepository->findOneBy(array('id' => $this->getUser()))
             )
                 ->setJoke($oneJoke);
             $entityManager->persist($like);

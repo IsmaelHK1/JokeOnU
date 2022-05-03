@@ -31,7 +31,10 @@ class RankedController extends AbstractController
         // $rank = $sql->getQuery()->execute();
 
         $like = $likeRepository->findAll();
-
+        $sql = $entityManager->createQueryBuilder('like')
+            ->select('COUNT(joke_id)')
+            ->groupBy('joke_id')
+            ->orderBy('joke_id DESC');
 
 
         // $jokeInOrder = $jokeRepository->findby(array(), array('likes' => 'DESC'));
