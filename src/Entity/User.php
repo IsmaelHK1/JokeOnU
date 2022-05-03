@@ -42,7 +42,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         return (string) $this->id;
     }
-    
+
     public function __construct()
     {
         $this->like_relation = new ArrayCollection();
@@ -75,7 +75,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getUserIdentifier(): string
     {
-        return (string) $this->username;
+        return (string) $this->id;
     }
 
     /**

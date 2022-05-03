@@ -1,4 +1,4 @@
-.contentbox{
+.contentbox {
     background: #FFFFFF;
     border: 2px solid #F4C624;
     box-shadow: 20px 20px 4px rgba(244, 198, 36, 0.25);
@@ -6,20 +6,23 @@
     width: 702px;
     height: 274px;
 }
-.wrapper{
+
+.wrapper {
     display: flex;
     justify-content: center;
     margin-top: 100px;
 }
-.contentbox .LABARRE{
+
+.contentbox .LABARRE {
     border-bottom: 2px solid black;
 }
-.contentbox .question{
+
+.contentbox .question {
     margin-top: 15px;
     text-align: center;
 }
 
-.contentbox .answer{
+.contentbox .answer {
     margin-top: 10px;
     text-align: center;
     color: black;
@@ -28,18 +31,21 @@
     margin-left: auto;
     margin-right: auto;
 }
-.answer:hover{
+
+.answer:hover {
     background-color: transparent;
 }
-.bi-heartbreak-fill{
+
+.bi-heartbreak-fill {
     position: relative;
     bottom: 110px;
     left: 1157px;
-    color : red;
+    color: red;
 }
-.bi-heart-fill{
+
+.likebtn {
     position: relative;
     bottom: 200px;
     left: 1200px;
-    color : green;
+    color: green;
 }
