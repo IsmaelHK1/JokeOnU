@@ -15,6 +15,11 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 use Symfony\Component\Mailer\MailerInterface;
+use App\Entity\Newsletter;
+use App\Form\NewsletterType;
+use App\Mail\NewsletterSubscribed;
+use DateTime;
+use Symfony\Component\Mime\Email;
 
 
 class RegistrationController extends AbstractController
@@ -49,6 +54,19 @@ class RegistrationController extends AbstractController
                 ->setJoke($blague);
             $entityManager->persist($user);
             $entityManager->flush();
+
+            //NEWSLETTER
+            $newsletter = new Newsletter();
+            $newsletter->setCreated(new DateTime());
+            $newsletter->setEmail($form->get('email')->getData());
+            $entityManager->persist($newsletter);
+            $entityManager->flush();
+            $email = (new Email())
+                ->from("noreply@jokeonu.com")
+                ->to($newsletter->getEmail())
+                ->subject("Inscription à la newsletter")
+                ->text("Votre email " . $newsletter->getEmail() . " a bien été enregistré, merci");
+            $mailer->send($email);
 
             return $userAuthenticator->authenticateUser(
                 $user,
