@@ -306,6 +306,8 @@ Cela nous a permis de récuperer les données de l'API et nous l'avons déposé 
 
 L'un des grand problème qui a pu arriver est un probléme de certificat ssl lors de l'appel d'API, en effet meme en retirant le 's' de https PHP ne changait pas la requète, le seul moyen de parvenir à faire cette appelle API était de changer des fichiers de configuration de php.ini.
 
+Nous sommes très déçu, car lors de cette fin de projet, nous n'avons pas réussi à mettre en place le boutton like, qui permet de liker une blague pour le foncitonnement du classement...
+
 ## V - Points d'améliorations
 
 Pour continuer l'avancée de notre application dans le futur, nous aimerions améliorer l'interface utilisateur de notre site qui à été bousculer par l'arriver des formulaires. Permettre à un utilisateur de pouvoir poster lui même sa blague sur le site. Et surtout optimiser tout le site (site trop lent).
