@@ -1,0 +1,51 @@
+.contentbox {
+    background: #FFFFFF;
+    border: 2px solid #F4C624;
+    box-shadow: 20px 20px 4px rgba(244, 198, 36, 0.25);
+    border-radius: 10px;
+    width: 702px;
+    height: 274px;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.contentbox .LABARRE {
+    border-bottom: 2px solid black;
+}
+
+.contentbox .question {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.contentbox .answer {
+    margin-top: 10px;
+    text-align: center;
+    color: black;
+    background-color: black;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.answer:hover {
+    background-color: transparent;
+}
+
+.bi-heartbreak-fill {
+    position: relative;
+    bottom: 110px;
+    left: 1157px;
+    color: red;
+}
+
+.likebtn {
+    position: relative;
+    bottom: 200px;
+    left: 1200px;
+    color: green;
+}

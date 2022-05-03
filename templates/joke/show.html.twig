@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Joke{% endblock %}
+
+{% block body %}
+    <h1>Joke</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ joke.id }}</td>
+            </tr>
+            <tr>
+                <th>Likes</th>
+                <td>{{ joke.likes }}</td>
+            </tr>
+            <tr>
+                <th>Key_api</th>
+                <td>{{ joke.keyApi }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_joke_index') }}">back to list</a>
+
+    <a href="{{ path('app_joke_edit', {'id': joke.id}) }}">edit</a>
+
+    {{ include('joke/_delete_form.html.twig') }}
+{% endblock %}

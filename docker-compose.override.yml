@@ -1,14 +1,18 @@
 version: '3'
 
 services:
-###> doctrine/doctrine-bundle ###
+  ###> doctrine/doctrine-bundle ###
   database:
     ports:
       - "5432"
-###< doctrine/doctrine-bundle ###
+  ###< doctrine/doctrine-bundle ###
 
-###> symfony/mailer ###
+  ###> symfony/mailer ###
   mailer:
-    image: schickling/mailcatcher
-    ports: [1025, 1080]
+    image: eaudeweb/mailer
+    container_name: mailtrap
+    ports:
+      - "9998:25"
+      - "9999:80"
+
 ###< symfony/mailer ###
