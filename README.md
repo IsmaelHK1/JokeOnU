@@ -1,4 +1,4 @@
-# zinattendu
+# Zinattendu
 # Module Framework Web B2 - Symfony - Ynov Lyon Campus
 
 <img width="208" alt="Capture d’écran 2022-05-03 à 23 41 20" src="https://user-images.githubusercontent.com/76099896/166571162-c1f64461-631d-48b7-82a1-a53569e637af.png">
@@ -32,7 +32,7 @@ $ git clone git@github.com:Ynov-b2-sf-2022/zinattendu.git
 Ensuite installer toutes les dépendances à l'aide des commandes :
 
 ```bash
-$ composer require
+$ composer install
 $ npm install
 ```
 Maintenant, il faut mettre en place la base de données à l'aide de la console symfony :
