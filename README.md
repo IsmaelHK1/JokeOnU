@@ -1,7 +1,5 @@
 # Module Framework Web B2 - Symfony - Ynov Lyon Campus
 
-# JokeOnU
-
 <img width="208" alt="Capture d’écran 2022-05-03 à 23 41 20" src="https://user-images.githubusercontent.com/76099896/166571162-c1f64461-631d-48b7-82a1-a53569e637af.png">
 
 ## I - Contexte & Présentation du projet
