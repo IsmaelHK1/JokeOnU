@@ -8,9 +8,9 @@ Nous sommes le groupe Zinattendu, composé de Ismaël HACQUIN et de Mattéo DINV
 
 **JokeOnU** est un site qui regroupe un certain nombre de blagues de tout genre, classé par catégories.
 
-Pour pouvoir accéder aux blagues, il faut d'abord se connecter ou se créer un compte. Une fois que votre compte est créé, une blague vous ai automatiquement assigné.
+Pour pouvoir accéder aux blagues, il faut d'abord se connecter ou se créer un compte. si vous créer votre compte, une blague vous ai automatiquement assigné.
 
-Vous avez la possibilité d'aimer qu'une seule blague parmis toutes celles proposées sur le site, la blague ayant reçu le plus de like (si c'est celle qui appartient a votre compte) vous fait monter de place au classement.
+Vous avez la possibilité d'aimer les blagues parmis toutes celles assigné au utilisateur, de ce fait un classement des utilisateurs est effectuer en fonction du nombre like qu'il a recu sur sa blagues assigné.
 
 ## I - b - Lancer le projet
 
@@ -55,15 +55,15 @@ Voici les différentes fonctionnalitées présentes sur notre application.
 
 La route `/login` :
 
-Cette route permet à l'utilisateur de pouvoir se connecter à son compte de manière claire et sécurisée.
+Cette route permet à l'utilisateur de pouvoir se connecter à son compte de manière claire et sécurisée, c'est la page de base si vous voulez utilisez notre application sans compte.
 
 La route `/logout` :
 
-Cette route permet à l'utilisatuer de pouvoir se déconnecter de son compte.
+Cette route permet à l'utilisatuer de pouvoir se déconnecter de son compte. le bouton déconnection dans la page profil peut vous aider.
 
 La route `/register` :
 
-Cette route permet à l'utilisateur de pouvoir se créer un compte, et ainsi renseigner ses informations à l'aide d'un formulaire.
+Cette route permet à l'utilisateur de pouvoir se créer un compte, et ainsi renseigner ses informations à l'aide d'un formulaire. Quand une personne crée son compte il recois automatiquement une newsletter.
 
 La route `/admin` :
 
@@ -80,10 +80,6 @@ Sur cette route, le role ADMIN, à la possibilité de modifier, supprimer ou cr�
 La route `/admin/joke/` :
 
 Sur cette route, le role ADMIN, à la possibilité de modifier, supprimer ou créer une blague
-
-La route `/newsletter/register` :
-
-Sur cette route, nous avons configurer le service d'un **mailer**.
 
 Nous avons également mis en place la connexion à l'[API](https://www.blagues-api.fr).
 
