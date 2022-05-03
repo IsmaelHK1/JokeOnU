@@ -1,17 +1,41 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Landing page
+{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
-
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.username) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
-
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+	<div class="container">
+		<div class="row">
+			<div class="col-md-5 mx-auto">
+				<div id="first">
+					<div class="myform form ">
+						<div class="logo mb-3">
+							<div class="col-md-12 text-center">
+								<h1>Inscription</h1>
+							</div>
+						</div>
+						<form action="" method="post" name="login">
+						{{ form_start(registrationForm) }}
+							<div class="form-group">
+								<label for="exampleInputEmail1">{{ form_row(registrationForm.username) }}</label>
+							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail1">{{ form_row(registrationForm.email) }}</label>
+							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail1">{{ form_row(registrationForm.plainPassword, {
+            						label: 'Password'
+        						}) }}</label>
+							</div>
+							{{ form_row(registrationForm.agreeTerms) }}
+							<div class="col-md-12 text-center ">
+								<button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm">Incris toi</button>
+							</div>
+							{{ form_end(registrationForm) }}
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 {% endblock %}

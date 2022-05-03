@@ -14,15 +14,49 @@
         </div>
     {% endif %}
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputUsername">Username</label>
-    <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" autocomplete="username" required autofocus>
-    <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-5 mx-auto">
+				<div id="first">
+					<div class="myform form ">
+						<div class="logo mb-3">
+							<div class="col-md-12 text-center">
+								<h1>Se connecter</h1>
+							</div>
+						</div>
+						<form action="" method="post" name="login">
+							<div class="form-group">
+								<label for="exampleInputEmail1">Username</label>
+								<input type="text" name="username" class="form-control" value="{{ last_username }}" id="inputUsername" placeholder="Entrer un email" autocomplete="username" required autofocus>
+							</div>
+							<div class="form-group">
+								<label for="exampleInputEmail1">Mot de passe</label>
+								<input type="password" name="password" id="password inputPassword" class="form-control" aria-describedby="emailHelp" placeholder="Entrer un mot de passe" autocomplete="current-password" required>
+							</div>
 
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
+                                <input type="hidden" name="_csrf_token"
+                                 value="{{ csrf_token('authenticate') }}"
+                                 >
+							<div class="col-md-12 text-center ">
+								<button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm">Connecte toi</button>
+							</div>
+							<div class="form-group">
+								<p class="text-center">Pas de compte ?
+									<a href="/register" id="signup">Inscrit toi ici</a>
+								</p>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+    {# <label for="inputUsername">Username</label>
+    <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control"
+    <label for="inputPassword">Password</label>
+    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required> #}
+
 
     {#
         Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
@@ -34,9 +68,5 @@
             </label>
         </div>
     #}
-
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
-    </button>
 </form>
 {% endblock %}

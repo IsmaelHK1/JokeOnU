@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Entity\Joke;
+use Blagues\BlaguesApi;
 use App\Form\RegistrationFormType;
 use App\Security\UserAuthenticator;
 use Doctrine\ORM\EntityManagerInterface;
@@ -20,6 +22,16 @@ class RegistrationController extends AbstractController
     #[Route('/register', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, UserAuthenticator $authenticator, EntityManagerInterface $entityManager, MailerInterface $mailer,): Response
     {
+        $blaguesApi = new BlaguesApi($_ENV['TOKEN']);
+
+        $jokes = $blaguesApi->getRandom();
+
+        $blague = new joke();
+        $blague->setKeyApi($jokes->getId());
+        $entityManager->persist($blague);
+        $entityManager->flush();
+        $blague->getId();
+
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
@@ -32,10 +44,11 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
-
+            $user->setEmail($form->get('email')->getData())
+                ->setRoles(['ROLE_USER'])
+                ->setJoke($blague);
             $entityManager->persist($user);
             $entityManager->flush();
-            // do anything else you need here, like send an email
 
             return $userAuthenticator->authenticateUser(
                 $user,
