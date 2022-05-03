@@ -10,10 +10,16 @@ Nous sommes le groupe Zinattendu, composé de Ismaël HACQUIN et de Mattéo DINV
 
 Pour pouvoir accéder aux blagues, il faut d'abord se connecter ou se créer un compte. Une fois que votre compte est créé, une blague vous ai automatiquement assigné.
 
-Vous avez la possibilité d'aimer qu'une seule blague parmis toutes celles proposées sur le site, la blague ayant reçu le plus de like (si c'est celle qui appartient a votre compte) vous monter de place au classement.
+Vous avez la possibilité d'aimer qu'une seule blague parmis toutes celles proposées sur le site, la blague ayant reçu le plus de like (si c'est celle qui appartient a votre compte) vous fait monter de place au classement.
 
 ## I - b - Lancer le projet
 
+Premierement, avant de récupere notre projet vous devais avoir une base de donnée sql et un mailtrap fait au préalable, ainsi fait vous devrait mettre les lien dans votre .env.local . Voici un exemple de à quoi doit ressembler le votre :
+
+```bash
+DATABASE_URL="mysql://root:<password>@localhost:<port>/jokeonu?serverVersion=8.0&charset=utf8mb4
+MAILER_DSN="smtp://localhost:<port>"
+```
 Tout d'abord pour utiliser notre site internet **JokeOnU**, vous devrez faire :
 
 ```bash
@@ -23,7 +29,7 @@ $ git clone git@github.com:Ynov-b2-sf-2022/zinattendu.git
 Ensuite installer toutes les dépendances à l'aide des commandes :
 
 ```bash
-$ composer install
+$ composer require
 $ npm install
 ```
 Maintenant, il faut mettre en place la base de données à l'aide de la console symfony :
@@ -145,7 +151,7 @@ $ php bin/console doctrine:fixtures:load
 Pour ce qui concerne la fonctionnalité d'authentification, nous avons crée une entity User à l'aide de la commande :
 
 ```bash
-$ php bin/console make:user
+$ php bin/console make:entity
 ```
 
 Maintenant que l'entité a été générée, il nous faut mettre à jour la base de données :
@@ -195,7 +201,7 @@ Pour cela, nous avons créé un nouveau controller à l'aide de la console symfo
 $ php bin/console make:controller Admin
 ```
 
-La partie administrateur est accessible via la route `/admin`.
+La partie administrateur est accessible via la route `/admin`. Il est important à savoir que seul les personnnes ayant le role admin peuvent avoir accés a cette route, de plus le seul moyen d'avoir accés a cette route une premiere fois c'est de se donner le role dans la base de donnée.
 
 ```bash
 <?php
@@ -257,7 +263,7 @@ Dans un premier temps, lorsque nous avons commencé à développer le projet Sym
 
 ![unknown](https://user-images.githubusercontent.com/76099896/166505684-c137190e-b714-4ad4-9315-ed2a8284f0fe.png)
 
-Nous avons également rencontrés quelques souci au niveaux de nos fixtures, nous n'arrivions pas à insèrer toutes nos données dans chacune des tables. Cela était du à cause d'une relation OneToOne entre notre entité User et Joke, ou nos fixtures voulaient assignés 2 blagues pour un seul user, ce qui dans notre cas n'était pas possible. 
+Nous avons également rencontrés quelques souci au niveaux de nos fixtures, nous n'arrivions pas à insèrer toutes nos données dans chacune des tables. Cela était du à cause d'une relation OneToOne entre notre entité User et Joke, ou nos fixtures voulaient assignés 2 blagues pour un seul user, ce qui dans notre cas impossible. 
 
 (Pour résoudre cela, dans le fichier `AppFixtures.php` nous avons retravaillé notre boucle FOR pour éviter ces soucis d'insertion.)
 
@@ -268,9 +274,13 @@ Pour cela, nous avons utiliser la commande :
 ```bash
 $ composer require zuruuh/blagues-api
 ```
-Cela nous a permis de récuperer les données de l'API.
+Cela nous a permis de récuperer les données de l'API et au sujet du token nous l'avons disposé dans le .env
+
+L'un des grand problème qui a pu arriver fut un probléme de certificat ssl lors de l'appel d'API, en effet meme en retirant le 's' de https PHP fesais la requête comme si rien n'avait changer, le seul moyen de parvenir à faire cette apelle d'API fut de changer des fichier de configuration de php.ini, il faut savoir que cette erreur n'arrive pas a tout les ordinateurs et il y'a peut de documentation sur ce problème, juste une question de chance.
+
+Nous pourrions faire encore une plus grande liste des problèmees rencontrés mais nous avons atteint notre but final donc admirer le résultat plutôt.
 
 ## V - Points d'améliorations
 
-Pour continuer l'avancée de notre application dans le futur, nous aimerions améliorer l'interface utilisateur de notre site. Permettre à un utilisateur de pouvoir poster lui même sa blague sur le site. Avoir l'impression que cela est similaire à un jeu.
+Pour continuer l'avancée de notre application dans le futur, nous aimerions améliorer l'interface utilisateur de notre site qui à été bousculer par l'arriver des formulaires. Permettre à un utilisateur de pouvoir poster lui même sa blague sur le site. Et surtout optimiser tout le site (ca ram de ouf).
 
